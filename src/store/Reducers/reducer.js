@@ -1,6 +1,6 @@
 const initialState = {
     value: '',
-    results: [],
+    result: [],
     searchTerms: []
 }
 

@@ -65,9 +65,10 @@ class Container extends Component {
 }
 
 const mapStateToProps = state => {
-    console.log(state);
     return {
-
+        reduxValue: state.value,
+        reduxResult: state.results,
+        reduxSearchTerms: state.searchTerms
     }
 }
 
