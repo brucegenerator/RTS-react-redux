@@ -1,6 +1,4 @@
 const initialState = {
-    value: '',
-    result: [],
     searchTerms: []
 }
 
