@@ -10,16 +10,13 @@ class Container extends Component {
     state = {
         value: '',
         result: [],
-        searchTerms: []
     }
 
     onSubmit = (query) => {
         axios.get("http://hn.algolia.com/api/v1/search?query=" + query)
         .then(res => {
-          console.log(res.data.hits)
           this.setState({
               result: res.data.hits,
-              searchTerms: this.state.searchTerms.concat(this.state.value)
             })
         })
         .catch(err => console.log(err));
@@ -37,7 +34,6 @@ class Container extends Component {
     }
 
     render() {
-        let id = new Date();
         return (
             <div>
                 <SearchForm 
@@ -45,11 +41,13 @@ class Container extends Component {
                     changed={this.onChange}
                     value={this.state.value} />
 
-                {this.state.searchTerms.map(i => (
-                    <ul key={id}>
-                        <li>{i}</li>
-                    </ul>
+                <button onClick={() => this.props.savedSearch(this.state.value)}>Save Search</button>
+                
+                <ul>
+                    {this.props.reduxSearchTerms.map(i => (
+                        <li key={i.id} onClick={() => this.props.deleteSearch(i.id)}>{i}</li> 
                 ))}
+                </ul>
 
                 {this.state.result.map(item => (
                     <SearchResults
@@ -66,15 +64,14 @@ class Container extends Component {
 
 const mapStateToProps = state => {
     return {
-        reduxValue: state.value,
-        reduxResult: state.results,
         reduxSearchTerms: state.searchTerms
     }
 }
 
 const mapDispatchToProps = dispatch => {
     return {
-
+        savedSearch: (search) => dispatch({type: 'GET_SEARCH_TERMS', payload: search}),
+        deleteSearch: (id) => dispatch({type:'DELETE_SEARCH_TERMS', searchID: id})
     }
 }
 

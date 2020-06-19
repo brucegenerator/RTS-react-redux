@@ -9,11 +9,11 @@ const reducer = (state = initialState, action) => {
         case 'GET_SEARCH_TERMS':
             return {
                 ...state,
-                searchTerms: state.searchTerms.concat(state.value)
+                searchTerms: state.searchTerms.concat(action.payload)
             }
         case 'DELETE_SEARCH_TERMS':
             const updatedArray = state.searchTerms.filter((result, index) => 
-                result.id !== action.resultId);
+                result.id !== action.searchID);
             return {
                 ...state,
                 searchTerms: updatedArray
