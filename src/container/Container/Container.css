@@ -1,0 +1,22 @@
+.saved-search {
+    list-style: none;
+    border-radius: 8px;
+    background-color: #cccccc;
+    padding: 8px;
+    margin: 8px;
+    width: 15%;
+    display: inline-block;
+}
+
+.saved-search:hover,
+.saved-search:active {
+    background-color: #ff5454;
+    cursor: pointer;
+}
+
+.background {
+    background: url('../../images/img-2.jpg');
+    height: 100%;
+    max-height: max-content;
+}
+

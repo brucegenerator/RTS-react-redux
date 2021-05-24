@@ -7,11 +7,10 @@ const SearchResults = (props) => {
     <div 
         className="articles" 
         key={props.id}>
-            <h6>Title: {props.title}</h6>
-            <h6>Author: {props.author}</h6>
-            <a href={props.link}>
-            <h6>Link: {props.link}</h6>
+            <a href={props.link} target='_blank'>
+            <h6>{props.title}</h6>
             </a>
+            <h6>by: {props.author}</h6>            
             {/* <h6>Created: {props.created}</h6> */}
     </div>
     )
